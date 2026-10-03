@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import LiveStats from "./LiveStats";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -75,8 +76,9 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Action Button */}
+        {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
+          <LiveStats />
           <a
             href="#waitlist"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1C1917] text-[#FAF8F5] text-xs font-semibold hover:bg-[#B86246] transition-all duration-300 shadow-md shadow-[#1C1917]/10"
@@ -145,7 +147,10 @@ export default function Navbar() {
               FAQ
             </Link>
           </nav>
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col gap-2">
+            <div className="flex justify-center pb-1">
+              <LiveStats />
+            </div>
             <a
               href="#waitlist"
               onClick={() => setMobileMenuOpen(false)}

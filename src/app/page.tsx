@@ -19,10 +19,12 @@ import ShoppableDupes from "./components/ShoppableDupes";
 import FAQAccordion from "./components/FAQAccordion";
 import Footer from "./components/Footer";
 import WaitlistForm from "./components/WaitlistForm";
+import AdBanner from "./components/AdBanner";
 
 export default function Home() {
   return (
     <>
+      <AdBanner type="top-bar" />
       <Navbar />
 
       <main className="min-h-screen">
@@ -194,6 +196,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Sponsored / AdSense Leaderboard Slot */}
+        <AdBanner type="leaderboard" adSlotId="decorly-leaderboard-1" />
+
         {/* ================= 3-STEP PROCESS ================= */}
         <section id="how-it-works" className="py-24 bg-[#F3EFEA]/50 border-y border-[#1C1917]/8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -267,6 +272,9 @@ export default function Home() {
 
         {/* ================= SHOPPABLE FURNITURE DUPES ================= */}
         <ShoppableDupes />
+
+        {/* In-Feed Sponsored Interior Collections */}
+        <AdBanner type="leaderboard" adSlotId="decorly-leaderboard-2" />
 
         {/* ================= IPHONE APP INTERFACE SHOWCASE ================= */}
         <section className="py-24 bg-[#FAF8F5] overflow-hidden">
