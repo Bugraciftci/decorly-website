@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/leads",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/leads.ts:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/waitlist",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/waitlist.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/waitlist",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/waitlist.ts:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}

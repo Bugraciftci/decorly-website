@@ -1,9 +1,17 @@
 /**
  * Cloudflare Pages Function: /api/waitlist
  * Handles VIP Beta TestFlight waitlist signups on the edge.
+ * Persistently stores leads in Cloudflare KV (DECORLY_LEADS).
  */
 
+interface KVNamespace {
+  put(key: string, value: string): Promise<void>;
+  get(key: string): Promise<string | null>;
+  list(options?: { prefix?: string; limit?: number }): Promise<{ keys: { name: string }[] }>;
+}
+
 interface Env {
+  DECORLY_LEADS?: KVNamespace;
   WEBHOOK_URL?: string;
   DISCORD_WEBHOOK_URL?: string;
 }
@@ -39,7 +47,16 @@ export const onRequestPost = async (context: PagesFunctionContext<Env>): Promise
       country: request.headers.get("cf-ipcountry") || "unknown",
     };
 
-    // Forward to Webhook (Discord / Slack / Airtable) if configured
+    // 1. Store in Cloudflare KV
+    if (env.DECORLY_LEADS) {
+      try {
+        await env.DECORLY_LEADS.put(`lead:${email}`, JSON.stringify(payload));
+      } catch (kvErr) {
+        console.error("KV save error:", kvErr);
+      }
+    }
+
+    // 2. Forward to Webhook (Discord / Slack / Airtable) if configured
     const webhookUrl = env.DISCORD_WEBHOOK_URL || env.WEBHOOK_URL;
     if (webhookUrl) {
       try {

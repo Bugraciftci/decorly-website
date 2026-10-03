@@ -1,0 +1,7 @@
+name = "decorly"
+pages_build_output_dir = "out"
+compatibility_date = "2026-10-01"
+
+[[kv_namespaces]]
+binding = "DECORLY_LEADS"
+id = "79dfed34e64b4dd3a3e1fd32b1c65502"
