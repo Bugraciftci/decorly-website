@@ -1,69 +1,432 @@
 import Image from "next/image";
+import Link from "next/link";
+import {
+  Sparkles,
+  Camera,
+  Layers,
+  ShoppingBag,
+  Sliders,
+  ShieldCheck,
+  Star,
+  CheckCircle,
+  ArrowRight,
+  Apple,
+} from "lucide-react";
+import Navbar from "./components/Navbar";
+import BeforeAfterSlider from "./components/BeforeAfterSlider";
+import StyleShowcase from "./components/StyleShowcase";
+import ShoppableDupes from "./components/ShoppableDupes";
+import FAQAccordion from "./components/FAQAccordion";
+import Footer from "./components/Footer";
+import WaitlistForm from "./components/WaitlistForm";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar />
+
+      <main className="min-h-screen">
+        {/* ================= HERO SECTION ================= */}
+        <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F3EFEA]/40 to-[#FAF8F5]">
+          {/* Subtle background ambient glows */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B86246]/6 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Announcement Pill */}
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#1C1917]/10 shadow-xs text-xs sm:text-sm font-medium text-[#1C1917]">
+                <span className="flex h-2 w-2 rounded-full bg-[#B86246] animate-pulse" />
+                <span>Private iOS TestFlight Beta Now Open</span>
+                <span className="text-[#B86246] font-semibold flex items-center">
+                  Claim Spot <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </span>
+              </div>
+            </div>
+
+            {/* Main Headline */}
+            <div className="text-center max-w-4xl mx-auto mb-8">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+                Reimagine Any Room in Seconds with Spatial AI
+              </h1>
+              <p className="mt-6 text-lg sm:text-xl text-[#57534E] max-w-2xl mx-auto leading-relaxed">
+                Snap a photo of your living room, kitchen, or bedroom. Decorly transforms your space into bespoke Japandi, Quiet Luxury, and Organic Modern designs with photorealistic lighting and shoppable furniture dupes.
+              </p>
+            </div>
+
+            {/* Email Waitlist Capture */}
+            <div id="waitlist" className="mb-12">
+              <WaitlistForm variant="hero" />
+            </div>
+
+            {/* Social Proof Metric Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-[#1C1917]/10 text-center">
+              <div>
+                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+                  90K+
+                </p>
+                <p className="text-xs text-[#57534E] font-medium mt-0.5">
+                  Monthly Pinterest Views
+                </p>
+              </div>
+              <div>
+                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+                  30+
+                </p>
+                <p className="text-xs text-[#57534E] font-medium mt-0.5">
+                  Curated Design Aesthetics
+                </p>
+              </div>
+              <div>
+                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917] flex items-center justify-center gap-1">
+                  4.9 <Star className="w-4 h-4 fill-[#B86246] text-[#B86246]" />
+                </p>
+                <p className="text-xs text-[#57534E] font-medium mt-0.5">
+                  Early Tester Satisfaction
+                </p>
+              </div>
+              <div>
+                <p className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+                  4K
+                </p>
+                <p className="text-xs text-[#57534E] font-medium mt-0.5">
+                  Ultra-HD Neural Renders
+                </p>
+              </div>
+            </div>
+
+            {/* Hero App Mockup & Renders Collage */}
+            <div className="mt-16 sm:mt-20 relative max-w-5xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#1C1917]/10 bg-white p-3 sm:p-5">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                  {/* Left Hero Card */}
+                  <div className="md:col-span-7 relative aspect-[16/11] rounded-2xl overflow-hidden shadow-inner bg-[#E8E2D8]">
+                    <Image
+                      src="/images/japandi_living.jpg"
+                      alt="Japandi Living Room generated by Decorly"
+                      fill
+                      priority
+                      className="object-cover"
+                    />
+                    <div className="absolute bottom-4 left-4 z-10 px-4 py-2 rounded-xl bg-white/90 backdrop-blur-md text-xs font-semibold text-[#1C1917] shadow-lg border border-[#1C1917]/10">
+                      ✨ Japandi & Warm Travertine • Generated in 4.2s
+                    </div>
+                  </div>
+
+                  {/* Right Hero iPhone Showcase */}
+                  <div className="md:col-span-5 flex flex-col justify-center space-y-4 p-2 sm:p-4">
+                    <div className="relative aspect-[3/4] w-full max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-lg border border-[#1C1917]/10">
+                      <Image
+                        src="/images/screenshots/01.png"
+                        alt="Decorly iOS App Interface"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xs font-semibold text-[#1C1917]">
+                        Native iOS Experience
+                      </p>
+                      <p className="text-[11px] text-[#57534E]">
+                        Instant camera capture, custom prompt sliders, and one-tap re-lighting.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= PINTEREST INTEGRATION BRIDGE ================= */}
+        <section className="py-12 bg-[#1C1917] text-[#FAF8F5] relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#E60023] flex items-center justify-center font-bold text-xl text-white shadow-lg shrink-0">
+                  P
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
+                    Joined Us From Pinterest?
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#FAF8F5]/70">
+                    Over 358+ live interior boards, 90K+ monthly home renovators. Decorly is the app behind the pins.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <a
+                  href="https://pinterest.com/decorlydesign"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-full bg-[#FAF8F5] text-[#1C1917] text-xs font-semibold hover:bg-white transition-colors"
+                >
+                  Follow @decorlydesign
+                </a>
+                <a
+                  href="#waitlist"
+                  className="px-5 py-2.5 rounded-full bg-[#B86246] text-white text-xs font-semibold hover:bg-[#A05238] transition-colors"
+                >
+                  Download Renders
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= BEFORE & AFTER INTERACTIVE SLIDER ================= */}
+        <section id="before-after" className="py-24 bg-[#FAF8F5]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B86246]/10 text-[#B86246] text-xs font-semibold uppercase tracking-wider mb-3">
+                <Layers className="w-3.5 h-3.5" />
+                Interactive Room Remodeling
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1C1917] tracking-tight mb-4">
+                See the Transformation in Real Time
+              </h2>
+              <p className="text-base sm:text-lg text-[#57534E]">
+                Decorly keeps your actual structural walls, windows, and door frames intact while completely modernizing finishes, furniture, and lighting.
+              </p>
+            </div>
+
+            <BeforeAfterSlider />
+          </div>
+        </section>
+
+        {/* ================= 3-STEP PROCESS ================= */}
+        <section id="how-it-works" className="py-24 bg-[#F3EFEA]/50 border-y border-[#1C1917]/8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B86246]/10 text-[#B86246] text-xs font-semibold uppercase tracking-wider mb-3">
+                <Sliders className="w-3.5 h-3.5" />
+                Simple 3-Step Workflow
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1C1917] tracking-tight mb-4">
+                From Camera Roll to Dream Room
+              </h2>
+              <p className="text-base sm:text-lg text-[#57534E]">
+                No 3D modeling skills or expensive architectural software required.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Step 1 */}
+              <div className="bg-white rounded-3xl p-8 border border-[#1C1917]/10 shadow-sm relative">
+                <div className="w-12 h-12 rounded-2xl bg-[#B86246]/10 text-[#B86246] flex items-center justify-center mb-6">
+                  <Camera className="w-6 h-6" />
+                </div>
+                <span className="text-xs uppercase font-bold tracking-widest text-[#B86246]">
+                  Step 01
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#1C1917] mt-1 mb-3">
+                  Snap Any Room
+                </h3>
+                <p className="text-sm text-[#57534E] leading-relaxed">
+                  Take a photo of your cluttered living room, outdated kitchen, or empty bedroom directly inside the Decorly iOS app.
+                </p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-white rounded-3xl p-8 border border-[#1C1917]/10 shadow-sm relative">
+                <div className="w-12 h-12 rounded-2xl bg-[#586551]/10 text-[#586551] flex items-center justify-center mb-6">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <span className="text-xs uppercase font-bold tracking-widest text-[#586551]">
+                  Step 02
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#1C1917] mt-1 mb-3">
+                  Pick Your Vibe
+                </h3>
+                <p className="text-sm text-[#57534E] leading-relaxed">
+                  Choose from Japandi, Quiet Luxury, Burrowcore, or Wabi-Sabi. Adjust custom prompt sliders for natural lighting and wall finishes.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-white rounded-3xl p-8 border border-[#1C1917]/10 shadow-sm relative">
+                <div className="w-12 h-12 rounded-2xl bg-[#B86246]/10 text-[#B86246] flex items-center justify-center mb-6">
+                  <ShoppingBag className="w-6 h-6" />
+                </div>
+                <span className="text-xs uppercase font-bold tracking-widest text-[#B86246]">
+                  Step 03
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#1C1917] mt-1 mb-3">
+                  Export & Shop Dupes
+                </h3>
+                <p className="text-sm text-[#57534E] leading-relaxed">
+                  Get high-res 4K renders ready to share with your partner or contractor, complete with shoppable furniture links matching your budget.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= 2026 STYLE SHOWCASE ================= */}
+        <StyleShowcase />
+
+        {/* ================= SHOPPABLE FURNITURE DUPES ================= */}
+        <ShoppableDupes />
+
+        {/* ================= IPHONE APP INTERFACE SHOWCASE ================= */}
+        <section className="py-24 bg-[#FAF8F5] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1C1917]/5 text-[#1C1917] text-xs font-semibold uppercase tracking-wider mb-3">
+                <Apple className="w-3.5 h-3.5" />
+                Designed For iOS 17+ & iPadOS
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1C1917] tracking-tight mb-4">
+                Built with Native Swift & Metal Precision
+              </h2>
+              <p className="text-base sm:text-lg text-[#57534E]">
+                Lightning-fast preview generation, Apple Silicon neural acceleration, and fluid Apple Human Interface design.
+              </p>
+            </div>
+
+            {/* Screenshots Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {[
+                {
+                  src: "/images/screenshots/01.png",
+                  title: "Instant Room Capture",
+                  subtitle: "Live camera room dimension scanning",
+                },
+                {
+                  src: "/images/screenshots/03.png",
+                  title: "Style Customizer",
+                  subtitle: "Fine-tune lighting, materials & palette",
+                },
+                {
+                  src: "/images/screenshots/05.png",
+                  title: "High-Res 4K Gallery",
+                  subtitle: "Save & compare multiple variations",
+                },
+                {
+                  src: "/images/screenshots/04.png",
+                  title: "Furniture Matcher",
+                  subtitle: "Tap any item to find budget dupes",
+                },
+              ].map((screen, idx) => (
+                <div
+                  key={idx}
+                  className="group relative rounded-3xl overflow-hidden bg-white border border-[#1C1917]/10 shadow-sm hover:shadow-xl transition-all duration-300 p-2 sm:p-3"
+                >
+                  <div className="relative aspect-[9/19] rounded-2xl overflow-hidden bg-[#E8E2D8]">
+                    <Image
+                      src={screen.src}
+                      alt={screen.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-3 text-center">
+                    <h4 className="font-serif font-bold text-sm text-[#1C1917]">
+                      {screen.title}
+                    </h4>
+                    <p className="text-[11px] text-[#57534E] mt-0.5">
+                      {screen.subtitle}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= TESTIMONIALS ================= */}
+        <section className="py-24 bg-[#F3EFEA]/60 border-t border-[#1C1917]/8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1C1917] tracking-tight mb-3">
+                Loved by Interior Designers & Homeowners
+              </h2>
+              <div className="flex items-center justify-center gap-1 text-[#B86246]">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#B86246]" />
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  quote:
+                    "Decorly saved us at least $4,000 in interior consultation fees. Being able to show my contractor the exact limewash fireplace and fluted timber wall render made all the difference.",
+                  author: "Elena Rostova",
+                  role: "Homeowner & Renovator (Austin, TX)",
+                },
+                {
+                  quote:
+                    "I run an interior moodboard page on Pinterest. When I tested Decorly on my old rental living room, the Japandi result looked so real my followers thought I moved into an architectural loft.",
+                  author: "Marcus Vance",
+                  role: "Design Content Creator (London)",
+                },
+                {
+                  quote:
+                    "The shoppable dupe feature is genius. It recommended an exact bouclé curved sofa match for $890 instead of the $4,500 designer original. The quality is phenomenal.",
+                  author: "Chloe Dubois",
+                  role: "Interior Stylist (Montreal)",
+                },
+              ].map((testi, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-3xl p-8 border border-[#1C1917]/10 shadow-sm flex flex-col justify-between"
+                >
+                  <p className="text-sm sm:text-base text-[#57534E] leading-relaxed italic mb-6">
+                    &quot;{testi.quote}&quot;
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-[#1C1917]/6">
+                    <div className="w-10 h-10 rounded-full bg-[#1C1917] text-[#FAF8F5] flex items-center justify-center font-bold text-xs">
+                      {testi.author[0]}
+                    </div>
+                    <div>
+                      <p className="font-serif font-bold text-sm text-[#1C1917]">
+                        {testi.author}
+                      </p>
+                      <p className="text-xs text-[#57534E]">{testi.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= FAQ ================= */}
+        <FAQAccordion />
+
+        {/* ================= FINAL VIP BETA CTA ================= */}
+        <section className="py-24 bg-[#1C1917] text-[#FAF8F5] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B86246]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+              <Sparkles className="w-3.5 h-3.5 text-[#B86246]" />
+              Limited TestFlight Beta Slots
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight mb-6">
+              Start Designing Your Dream Home Today
+            </h2>
+
+            <p className="text-base sm:text-lg text-[#FAF8F5]/80 max-w-xl mx-auto mb-10 leading-relaxed">
+              Join thousands of design lovers. Enter your email to claim your VIP TestFlight invite and unlock 50 complimentary 4K AI room renders.
+            </p>
+
+            <div className="max-w-md mx-auto mb-6">
+              <WaitlistForm variant="card" />
+            </div>
+
+            <p className="text-xs text-[#FAF8F5]/50">
+              Compatible with iPhone & iPad running iOS 17+. Zero spam, unsubscribe anytime.
+            </p>
+          </div>
+        </section>
       </main>
-    </div>
+
+      <Footer />
+    </>
   );
 }
