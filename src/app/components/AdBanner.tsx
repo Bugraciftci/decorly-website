@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowUpRight, Sparkles, X } from "lucide-react";
 
 interface AdBannerProps {
@@ -10,6 +10,20 @@ interface AdBannerProps {
 
 export default function AdBanner({ type, adSlotId = "decorly-ad-slot-1" }: AdBannerProps) {
   const [closed, setClosed] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (
+        typeof window !== "undefined" &&
+        window.adsbygoogle &&
+        process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID
+      ) {
+        window.adsbygoogle.push({});
+      }
+    } catch {
+      // AdSense initialization error guard
+    }
+  }, []);
 
   if (closed) return null;
 
@@ -85,9 +99,9 @@ export default function AdBanner({ type, adSlotId = "decorly-ad-slot-1" }: AdBan
 
           {/* Dynamic Ad Placement Tag (When AdSense is configured) */}
           <ins
-            className="adsbygoogle hidden"
+            className="adsbygoogle"
             style={{ display: "block" }}
-            data-ad-client="ca-pub-DECORLY"
+            data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-0000000000000000"}
             data-ad-slot={adSlotId}
             data-ad-format="auto"
             data-full-width-responsive="true"

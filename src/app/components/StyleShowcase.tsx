@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Sparkles, ArrowRight, Eye } from "lucide-react";
+import { trackStyleClick } from "@/lib/analytics";
 
 interface StyleItem {
   id: string;
@@ -175,7 +176,10 @@ export default function StyleShowcase() {
             <div
               key={item.id}
               className="group relative rounded-3xl overflow-hidden bg-white border border-[#1C1917]/10 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col cursor-pointer"
-              onClick={() => setSelectedStyle(item)}
+              onClick={() => {
+                trackStyleClick(item.title, item.categoryLabel);
+                setSelectedStyle(item);
+              }}
             >
               {/* Image Frame */}
               <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#E8E2D8]">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Sparkles, Apple } from "lucide-react";
+import { trackLeadSignup } from "@/lib/analytics";
 
 interface WaitlistFormProps {
   variant?: "hero" | "card";
@@ -26,7 +27,8 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
     e.preventDefault();
     setError("");
 
-    if (!email || !email.includes("@") || !email.includes(".")) {
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail || !trimmedEmail.includes("@") || !trimmedEmail.includes(".")) {
       setError("Please enter a valid email address.");
       return;
     }
@@ -35,10 +37,21 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
 
     try {
       // Save locally
-      localStorage.setItem("decorly_waitlist_email", email);
+      localStorage.setItem("decorly_waitlist_email", trimmedEmail);
 
-      // Post to local storage or API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // Fire analytics conversion event
+      trackLeadSignup(trimmedEmail);
+
+      // Post to Cloudflare Pages API endpoint
+      try {
+        await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: trimmedEmail }),
+        });
+      } catch {
+        // Fallback gracefully even if offline
+      }
 
       setIsSubmitted(true);
     } catch {

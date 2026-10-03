@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const sansFont = Plus_Jakarta_Sans({
@@ -21,8 +22,15 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+const pinterestTagId = process.env.NEXT_PUBLIC_PINTEREST_TAG_ID;
+const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+const pinterestVerify = process.env.NEXT_PUBLIC_PINTEREST_DOMAIN_VERIFY;
+const googleVerify = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://decorly.app"),
+  metadataBase: new URL("https://decorly.pages.dev"),
   title: {
     default: "Decorly — AI Interior Design & Luxury Room Redesign",
     template: "%s | Decorly AI Interior Design",
@@ -43,7 +51,7 @@ export const metadata: Metadata = {
     "furniture finder",
     "Pinterest home decor",
   ],
-  authors: [{ name: "Decorly Studio", url: "https://decorly.app" }],
+  authors: [{ name: "Decorly Studio", url: "https://decorly.pages.dev" }],
   creator: "Decorly",
   publisher: "Decorly",
   formatDetection: {
@@ -52,12 +60,12 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://decorly.app",
+    canonical: "https://decorly.pages.dev",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://decorly.app",
+    url: "https://decorly.pages.dev",
     title: "Decorly — AI Interior Design & Luxury Room Redesign",
     description:
       "Transform any room in seconds. Take a photo, pick your dream aesthetic, and watch AI remodel your home with realistic materials, lighting, and shoppable dupes.",
@@ -82,6 +90,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/app-icon.png",
     apple: "/images/app-icon.png",
+  },
+  verification: {
+    google: googleVerify || undefined,
+    other: {
+      ...(pinterestVerify ? { "p:domain_verify": [pinterestVerify] } : {}),
+    },
   },
   robots: {
     index: true,
@@ -121,14 +135,14 @@ export default function RootLayout({
         },
         "description":
           "AI-powered interior design and room makeover studio for iPhone and iPad.",
-        "image": "https://decorly.app/images/app-icon.png",
-        "url": "https://decorly.app",
+        "image": "https://decorly.pages.dev/images/app-icon.png",
+        "url": "https://decorly.pages.dev",
       },
       {
         "@type": "Organization",
         "name": "Decorly",
-        "url": "https://decorly.app",
-        "logo": "https://decorly.app/images/app-icon.png",
+        "url": "https://decorly.pages.dev",
+        "logo": "https://decorly.pages.dev/images/app-icon.png",
         "sameAs": [
           "https://pinterest.com/decorlydesign",
         ],
@@ -143,9 +157,65 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        {/* Pinterest Conversion & Audience Tag */}
+        {pinterestTagId && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                !function(e){if(!window.pintrk){window.pintrk = function () {
+                window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+                  n=window.pintrk;n.queue=[],n.version="3.0";var
+                  t=document.createElement("script");t.async=!0,t.src=e;var
+                  r=document.getElementsByTagName("script")[0];
+                  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+                pintrk('load', '${pinterestTagId}');
+                pintrk('page');
+              `,
+            }}
+          />
+        )}
       </head>
       <body className="min-h-screen bg-[#FAF8F5] text-[#1C1917] font-sans antialiased selection:bg-[#B86246]/20 selection:text-[#B86246]">
         {children}
+
+        {/* Google Analytics 4 (GA4) */}
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Google AdSense Integration */}
+        {adsenseId && (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
+
+        {/* Cloudflare Web Analytics */}
+        {cfBeaconToken && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
+            strategy="lazyOnload"
+          />
+        )}
       </body>
     </html>
   );
