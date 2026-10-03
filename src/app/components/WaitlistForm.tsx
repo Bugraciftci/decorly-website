@@ -15,7 +15,6 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Check if already submitted in this browser
     const stored = localStorage.getItem("decorly_waitlist_email");
     if (stored) {
       setEmail(stored);
@@ -36,13 +35,9 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
     setIsLoading(true);
 
     try {
-      // Save locally
       localStorage.setItem("decorly_waitlist_email", trimmedEmail);
-
-      // Fire analytics conversion event
       trackLeadSignup(trimmedEmail);
 
-      // Post to Cloudflare Pages API endpoint
       try {
         await fetch("/api/waitlist", {
           method: "POST",
@@ -50,7 +45,7 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
           body: JSON.stringify({ email: trimmedEmail }),
         });
       } catch {
-        // Fallback gracefully even if offline
+        // Fallback gracefully
       }
 
       setIsSubmitted(true);
@@ -63,18 +58,18 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-2xl bg-white/90 border border-[#B86246]/20 p-5 sm:p-6 text-center shadow-lg shadow-[#1C1917]/5 max-w-md mx-auto">
-        <div className="w-12 h-12 rounded-full bg-[#B86246]/10 text-[#B86246] mx-auto flex items-center justify-center mb-3">
+      <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#B26A4A]/25 p-6 sm:p-7 text-center shadow-luxury-md max-w-md mx-auto animate-fade-in">
+        <div className="w-12 h-12 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] mx-auto flex items-center justify-center mb-3">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h4 className="font-serif text-lg font-bold text-[#1C1917] mb-1">
-          You&apos;re on the VIP Beta List!
+        <h4 className="font-editorial text-2xl font-semibold text-[#181615] mb-1">
+          Welcome to the Private Beta
         </h4>
-        <p className="text-xs sm:text-sm text-[#57534E] mb-3">
-          We reserved your spot for <span className="font-semibold text-[#1C1917]">{email}</span>. TestFlight invite link and the 2026 Trend Lookbook are on their way.
+        <p className="text-xs sm:text-sm text-[#6B645C] mb-4 leading-relaxed">
+          Your invitation for <span className="font-medium text-[#181615]">{email}</span> is confirmed. Look for your TestFlight link and seasonal lookbook in your inbox shortly.
         </p>
-        <div className="inline-flex items-center gap-2 text-xs font-medium text-[#B86246] bg-[#B86246]/10 px-3 py-1.5 rounded-full">
-          <Sparkles className="w-3.5 h-3.5" /> 50 Free 4K AI Renders Unlocked
+        <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#B26A4A] bg-[#B26A4A]/10 px-4 py-2 rounded-full">
+          <Sparkles className="w-3.5 h-3.5" /> 50 Free 4K Renders Unlocked
         </div>
       </div>
     );
@@ -89,7 +84,7 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email for TestFlight invite..."
-            className="w-full h-13 px-4 sm:px-5 rounded-full bg-white text-[#1C1917] placeholder:text-[#57534E]/60 border border-[#1C1917]/15 focus:outline-none focus:ring-2 focus:ring-[#B86246]/40 focus:border-[#B86246] shadow-sm text-sm sm:text-base transition-all"
+            className="w-full h-14 px-5 rounded-full bg-white/95 text-[#181615] placeholder:text-[#6B645C]/60 border border-black/[0.08] focus:outline-none focus:ring-2 focus:ring-[#B26A4A]/30 focus:border-[#B26A4A] shadow-luxury-sm text-sm sm:text-base transition-all"
             disabled={isLoading}
             required
           />
@@ -97,7 +92,7 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="h-13 px-7 rounded-full bg-[#1C1917] hover:bg-[#B86246] text-[#FAF8F5] text-sm sm:text-base font-semibold shadow-lg shadow-[#1C1917]/15 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-98 disabled:opacity-70 whitespace-nowrap"
+          className="h-14 px-8 rounded-full bg-[#181615] hover:bg-[#B26A4A] text-[#FAF8F5] text-sm sm:text-base font-medium tracking-wide shadow-luxury-sm hover:shadow-luxury-md transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-70 whitespace-nowrap"
         >
           {isLoading ? (
             <span className="inline-block w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -110,15 +105,15 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
         </button>
       </form>
 
-      {error && <p className="text-xs text-red-600 mt-2 text-center">{error}</p>}
+      {error && <p className="text-xs text-red-600 mt-2.5 text-center font-medium">{error}</p>}
 
-      <div className="flex items-center justify-center gap-4 mt-3 text-xs text-[#57534E]">
-        <span className="flex items-center gap-1">
-          <Apple className="w-3.5 h-3.5 text-[#1C1917]" /> iOS 17+ & iPadOS
+      <div className="flex items-center justify-center gap-4 mt-3.5 text-xs text-[#6B645C]">
+        <span className="flex items-center gap-1.5 font-medium text-[#181615]">
+          <Apple className="w-3.5 h-3.5" /> iOS 17+ & iPadOS
         </span>
-        <span className="w-1 h-1 rounded-full bg-[#1C1917]/30" />
-        <span>No credit card needed</span>
-        <span className="w-1 h-1 rounded-full bg-[#1C1917]/30" />
+        <span className="w-1 h-1 rounded-full bg-black/20" />
+        <span>No credit card required</span>
+        <span className="w-1 h-1 rounded-full bg-black/20" />
         <span>Instant access</span>
       </div>
     </div>

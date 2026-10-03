@@ -8,45 +8,45 @@ export default function LiveStats() {
 
   return (
     <>
-      {/* Floating or Top Metrics Trigger Button */}
+      {/* Floating or Header Metrics Trigger Button */}
       <button
         onClick={() => setModalOpen(true)}
-        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white text-[#1C1917] border border-[#1C1917]/10 text-xs font-semibold shadow-xs hover:shadow-md transition-all cursor-pointer group"
+        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 hover:bg-white text-[#181615] border border-black/[0.06] text-xs font-medium shadow-luxury-sm hover:shadow-luxury-md transition-all cursor-pointer group"
       >
-        <BarChart3 className="w-3.5 h-3.5 text-[#B86246] group-hover:scale-110 transition-transform" />
-        <span>Live Stats:</span>
-        <span className="text-[#B86246] font-bold">94.8K+ Views</span>
+        <BarChart3 className="w-3.5 h-3.5 text-[#B26A4A] group-hover:scale-110 transition-transform" />
+        <span className="text-[#6B645C]">Live:</span>
+        <span className="text-[#B26A4A] font-semibold">94.8K+ Views</span>
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
       </button>
 
       {/* Analytics Modal Dialog */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in"
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="relative max-w-lg w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-[#1C1917]/10 p-6 sm:p-8"
+            className="relative max-w-lg w-full bg-white rounded-[32px] overflow-hidden shadow-luxury-xl border border-black/[0.08] p-6 sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-[#1C1917]/8 mb-6">
+            <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#B86246]/10 text-[#B86246] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-2xl bg-[#B26A4A]/10 text-[#B26A4A] flex items-center justify-center">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#1C1917]">
+                  <h3 className="font-editorial text-2xl font-medium text-[#181615]">
                     Decorly Live Performance
                   </h3>
-                  <p className="text-xs text-[#57534E]">
+                  <p className="text-xs text-[#6B645C] font-light">
                     Real-time community & design metrics
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setModalOpen(false)}
-                className="p-1.5 rounded-full text-[#57534E] hover:text-[#1C1917] hover:bg-[#FAF8F5] transition-colors"
+                className="p-2 rounded-full text-[#6B645C] hover:text-[#181615] hover:bg-black/5 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -54,13 +54,13 @@ export default function LiveStats() {
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#1C1917]/6">
-                <div className="flex items-center gap-1.5 text-xs text-[#57534E] mb-1">
-                  <Eye className="w-3.5 h-3.5 text-[#B86246]" />
+            <div className="grid grid-cols-2 gap-3.5 mb-6">
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-black/[0.04]">
+                <div className="flex items-center gap-1.5 text-xs text-[#6B645C] mb-1">
+                  <Eye className="w-3.5 h-3.5 text-[#B26A4A]" />
                   <span>Monthly Views</span>
                 </div>
-                <p className="font-serif text-2xl font-bold text-[#1C1917]">
+                <p className="font-editorial text-3xl font-medium text-[#181615]">
                   94,820
                 </p>
                 <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-0.5 mt-0.5">
@@ -68,42 +68,42 @@ export default function LiveStats() {
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#1C1917]/6">
-                <div className="flex items-center gap-1.5 text-xs text-[#57534E] mb-1">
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-black/[0.04]">
+                <div className="flex items-center gap-1.5 text-xs text-[#6B645C] mb-1">
                   <Pin className="w-3.5 h-3.5 text-[#E60023]" />
                   <span>Live Pins</span>
                 </div>
-                <p className="font-serif text-2xl font-bold text-[#1C1917]">
+                <p className="font-editorial text-3xl font-medium text-[#181615]">
                   358
                 </p>
-                <span className="text-[10px] text-[#57534E] font-medium mt-0.5">
+                <span className="text-[10px] text-[#6B645C] font-light mt-0.5">
                   Across 15 curated boards
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#1C1917]/6">
-                <div className="flex items-center gap-1.5 text-xs text-[#57534E] mb-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#B86246]" />
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-black/[0.04]">
+                <div className="flex items-center gap-1.5 text-xs text-[#6B645C] mb-1">
+                  <Sparkles className="w-3.5 h-3.5 text-[#B26A4A]" />
                   <span>AI Renders Made</span>
                 </div>
-                <p className="font-serif text-2xl font-bold text-[#1C1917]">
+                <p className="font-editorial text-3xl font-medium text-[#181615]">
                   1,420+
                 </p>
-                <span className="text-[10px] text-[#57534E] font-medium mt-0.5">
+                <span className="text-[10px] text-[#6B645C] font-light mt-0.5">
                   4K Photorealistic rooms
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#1C1917]/6">
-                <div className="flex items-center gap-1.5 text-xs text-[#57534E] mb-1">
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-black/[0.04]">
+                <div className="flex items-center gap-1.5 text-xs text-[#6B645C] mb-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Cloudflare Pages</span>
+                  <span>Cloudflare CDN</span>
                 </div>
-                <p className="font-serif text-xl font-bold text-emerald-600 flex items-center gap-1.5">
+                <p className="font-editorial text-2xl font-medium text-emerald-600 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> 100%
                 </p>
-                <span className="text-[10px] text-[#57534E] font-medium mt-0.5">
-                  Global Edge CDN Uptime
+                <span className="text-[10px] text-[#6B645C] font-light mt-0.5">
+                  Global Edge Uptime
                 </span>
               </div>
             </div>
@@ -114,16 +114,16 @@ export default function LiveStats() {
                 href="https://www.pinterest.com/auradecor_ai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-[#E60023]/10 hover:bg-[#E60023]/15 text-[#E60023] text-xs font-semibold transition-colors"
+                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#E60023]/10 hover:bg-[#E60023]/15 text-[#E60023] text-xs font-semibold transition-colors"
               >
                 <span>View Public Pinterest Analytics & Boards</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a
                 href="https://decorly.pages.dev"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-[#1C1917] hover:bg-[#B86246] text-[#FAF8F5] text-xs font-semibold transition-colors"
+                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#181615] hover:bg-[#B26A4A] text-[#FAF8F5] text-xs font-semibold transition-colors"
               >
-                <span>Live Site: decorly.pages.dev</span>
+                <span>Live Production: decorly.pages.dev</span>
                 <span className="text-emerald-400 text-[10px]">Active</span>
               </a>
             </div>

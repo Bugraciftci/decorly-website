@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkles, ArrowRight, Eye } from "lucide-react";
+import { Sparkles, ArrowRight, Eye, X } from "lucide-react";
 import { trackStyleClick } from "@/lib/analytics";
 
 interface StyleItem {
@@ -26,7 +26,7 @@ const STYLES: StyleItem[] = [
     image: "/images/japandi_living.jpg",
     materials: "Fluted White Oak, Bouclé, Raw Travertine",
     lighting: "Warm diffused 2700K floor lamps & morning sun",
-    colorPalette: ["#E8E2D8", "#C5BCB2", "#FAF8F5", "#1C1917"],
+    colorPalette: ["#E8E2D8", "#C5BCB2", "#FAF8F5", "#181615"],
     saves: "34.2K saves",
   },
   {
@@ -59,7 +59,7 @@ const STYLES: StyleItem[] = [
     image: "/images/quiet_luxury_bedroom.jpg",
     materials: "Washed Belgian Linen, Oatmeal Upholstery, Travertine",
     lighting: "Soft ambient ceramic sconces & sheer drapes",
-    colorPalette: ["#FAF8F5", "#E8E2D8", "#B5AAA0", "#57534E"],
+    colorPalette: ["#FAF8F5", "#E8E2D8", "#B5AAA0", "#6B645C"],
     saves: "52.1K saves",
   },
   {
@@ -70,7 +70,7 @@ const STYLES: StyleItem[] = [
     image: "/images/hidden_coffee_bar.jpg",
     materials: "Dark Fluted Timber, Backlit Onyx, Stainless Steel",
     lighting: "Warm undermount warm glow with auto-sensor",
-    colorPalette: ["#231F1C", "#D4A373", "#FAF8F5", "#B86246"],
+    colorPalette: ["#231F1C", "#D4A373", "#FAF8F5", "#B26A4A"],
     saves: "38.7K saves",
   },
   {
@@ -92,7 +92,7 @@ const STYLES: StyleItem[] = [
     image: "/images/travertine_table.jpg",
     materials: "Pitted Italian Travertine, Terracotta Pottery, Linen",
     lighting: "Direct directional gallery spotlights",
-    colorPalette: ["#E7DFD5", "#C4A482", "#B86246", "#FAF8F5"],
+    colorPalette: ["#E7DFD5", "#C4A482", "#B26A4A", "#FAF8F5"],
     saves: "19.5K saves",
   },
   {
@@ -103,7 +103,7 @@ const STYLES: StyleItem[] = [
     image: "/images/sculptural_chair.jpg",
     materials: "Textured Bouclé Wool, Walnut Stems, Silk Rug",
     lighting: "Paper lantern Akari-style diffuse illumination",
-    colorPalette: ["#FAF8F5", "#D5CEBF", "#8C8275", "#1C1917"],
+    colorPalette: ["#FAF8F5", "#D5CEBF", "#8C8275", "#181615"],
     saves: "31.9K saves",
   },
   {
@@ -114,7 +114,7 @@ const STYLES: StyleItem[] = [
     image: "/images/studio_hack.jpg",
     materials: "Slatted Oak Partition, Custom Built-in Banquette",
     lighting: "Track lights with narrow 15-degree beam angle",
-    colorPalette: ["#EFECE6", "#D4C7B5", "#4A463F", "#B86246"],
+    colorPalette: ["#EFECE6", "#D4C7B5", "#4A463F", "#B26A4A"],
     saves: "22.4K saves",
   },
 ];
@@ -126,29 +126,27 @@ export default function StyleShowcase() {
   const [selectedStyle, setSelectedStyle] = useState<StyleItem | null>(null);
 
   const filtered =
-    filter === "all"
-      ? STYLES
-      : STYLES.filter((item) => item.category === filter);
+    filter === "all" ? STYLES : STYLES.filter((item) => item.category === filter);
 
   return (
-    <section id="styles" className="py-24 bg-[#FAF8F5]">
+    <section id="styles" className="py-28 bg-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B86246]/10 text-[#B86246] text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             Curated 2026 Trend Catalog
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1C1917] tracking-tight mb-4">
-            30+ Architectural Aesthetics, One Tap Away
+          <h2 className="text-4xl sm:text-6xl font-editorial font-normal tracking-tight text-[#181615] leading-[1.15] mb-5">
+            30+ Architectural Aesthetics, <span className="italic font-light">Rendered in 4K</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#57534E]">
-            Decorly doesn&apos;t just slap generic filters. It analyzes structural ceiling beams, window orientation, and room depth to render authentic luxury materials.
+          <p className="text-base sm:text-lg text-[#6B645C] font-light leading-relaxed">
+            Decorly doesn&apos;t apply flat filters. It calculates natural daylight angles, room geometry, and material depth to render spaces worthy of architectural editorials.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
           {[
             { id: "all", label: "All Spaces" },
             { id: "living", label: "Living Rooms" },
@@ -159,10 +157,10 @@ export default function StyleShowcase() {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id as FilterCategory)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
                 filter === cat.id
-                  ? "bg-[#1C1917] text-[#FAF8F5] shadow-md shadow-[#1C1917]/10"
-                  : "bg-white text-[#57534E] hover:text-[#1C1917] hover:bg-[#F3EFEA] border border-[#1C1917]/10"
+                  ? "bg-[#181615] text-[#FAF8F5] shadow-luxury-sm"
+                  : "bg-white/80 text-[#6B645C] hover:text-[#181615] hover:bg-white border border-black/[0.05]"
               }`}
             >
               {cat.label}
@@ -171,86 +169,83 @@ export default function StyleShowcase() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="group relative rounded-3xl overflow-hidden bg-white border border-[#1C1917]/10 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col cursor-pointer"
+              className="group relative rounded-[28px] overflow-hidden bg-white border border-black/[0.06] shadow-luxury-sm hover:shadow-luxury-lg transition-all duration-500 flex flex-col cursor-pointer"
               onClick={() => {
                 trackStyleClick(item.title, item.categoryLabel);
                 setSelectedStyle(item);
               }}
             >
               {/* Image Frame */}
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#E8E2D8]">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#EAE3D9]">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                {/* Gradient vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-[#1C1917]/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#181615]/85 via-[#181615]/15 to-transparent opacity-65 group-hover:opacity-80 transition-opacity duration-300" />
 
-                {/* Saves badge */}
-                <div className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-semibold text-[#1C1917] border border-[#1C1917]/10 shadow-sm">
+                {/* Top Badges */}
+                <div className="absolute top-4.5 right-4.5 z-10 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-semibold text-[#181615] shadow-xs">
                   {item.saves}
                 </div>
-
-                {/* Category badge */}
-                <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-[#1C1917]/70 backdrop-blur-md text-[11px] font-semibold text-[#FAF8F5]">
+                <div className="absolute top-4.5 left-4.5 z-10 px-3 py-1 rounded-full bg-[#181615]/70 backdrop-blur-md text-[11px] font-medium text-[#FAF8F5]">
                   {item.categoryLabel}
                 </div>
 
-                {/* Bottom Overlay Info inside image */}
-                <div className="absolute bottom-4 left-4 right-4 text-white z-10">
-                  <h3 className="font-serif text-xl font-bold leading-snug drop-shadow-sm mb-1">
+                {/* Bottom Overlay Info */}
+                <div className="absolute bottom-5 left-5 right-5 text-white z-10">
+                  <h3 className="font-editorial text-2xl sm:text-[26px] font-medium leading-snug drop-shadow-sm mb-1">
                     {item.title}
                   </h3>
                   <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/80">
-                    <Eye className="w-3.5 h-3.5 text-[#B86246]" />
-                    <span>Tap to view materials & lighting</span>
+                    <Eye className="w-3.5 h-3.5 text-[#B26A4A]" />
+                    <span>View materials & lighting details</span>
                   </div>
                 </div>
               </div>
 
               {/* Card Meta Footer */}
-              <div className="p-4 sm:p-5 flex flex-col justify-between flex-1 bg-white">
-                <div className="space-y-2 mb-3">
+              <div className="p-5 flex flex-col justify-between flex-1 bg-white">
+                <div className="space-y-2 mb-4">
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#57534E]">
-                      Key Materials
+                    <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-[#6B645C]">
+                      Materials
                     </span>
-                    <p className="text-xs text-[#1C1917] font-medium line-clamp-1">
+                    <p className="text-xs text-[#181615] font-medium line-clamp-1 mt-0.5">
                       {item.materials}
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#57534E]">
+                    <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-[#6B645C]">
                       Lighting Scheme
                     </span>
-                    <p className="text-xs text-[#57534E] line-clamp-1">
+                    <p className="text-xs text-[#6B645C] line-clamp-1 mt-0.5">
                       {item.lighting}
                     </p>
                   </div>
                 </div>
 
-                {/* Color swatches */}
-                <div className="flex items-center justify-between pt-3 border-t border-[#1C1917]/8">
+                {/* Swatches & CTA */}
+                <div className="flex items-center justify-between pt-3.5 border-t border-black/[0.05]">
                   <div className="flex items-center gap-1.5">
                     {item.colorPalette.map((color, cIdx) => (
                       <span
                         key={cIdx}
-                        className="w-4 h-4 rounded-full border border-[#1C1917]/10 shadow-xs"
+                        className="w-4.5 h-4.5 rounded-full border border-black/10 shadow-xs"
                         style={{ backgroundColor: color }}
                         title={color}
                       />
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#B86246] group-hover:translate-x-0.5 transition-transform">
-                    Restyle this <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#B26A4A] group-hover:translate-x-1 transition-transform">
+                    Apply look <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
@@ -258,17 +253,17 @@ export default function StyleShowcase() {
           ))}
         </div>
 
-        {/* Style Detail Modal */}
+        {/* Modal Dialog */}
         {selectedStyle && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in"
             onClick={() => setSelectedStyle(null)}
           >
             <div
-              className="relative max-w-2xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-[#1C1917]/10 p-6 sm:p-8"
+              className="relative max-w-2xl w-full bg-white rounded-[32px] overflow-hidden shadow-luxury-xl border border-black/[0.08] p-6 sm:p-8"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 bg-[#E8E2D8]">
+              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 bg-[#EAE3D9]">
                 <Image
                   src={selectedStyle.image}
                   alt={selectedStyle.title}
@@ -279,35 +274,35 @@ export default function StyleShowcase() {
 
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#B86246]">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B26A4A]">
                     {selectedStyle.categoryLabel}
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-[#1C1917]">
+                  <h3 className="font-editorial text-3xl font-medium text-[#181615] mt-0.5">
                     {selectedStyle.title}
                   </h3>
                 </div>
                 <button
                   onClick={() => setSelectedStyle(null)}
-                  className="p-2 rounded-full bg-[#F3EFEA] hover:bg-[#E8E2D8] text-[#1C1917] transition-colors"
+                  className="p-2 rounded-full bg-black/5 hover:bg-black/10 text-[#181615] transition-colors cursor-pointer"
                 >
-                  ✕
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-y border-[#1C1917]/8 text-xs sm:text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-y border-black/[0.06] text-xs sm:text-sm">
                 <div>
-                  <span className="font-bold text-[#1C1917]">Materials & Finishes:</span>
-                  <p className="text-[#57534E] mt-0.5">{selectedStyle.materials}</p>
+                  <span className="font-semibold text-[#181615]">Materials & Finishes:</span>
+                  <p className="text-[#6B645C] mt-1">{selectedStyle.materials}</p>
                 </div>
                 <div>
-                  <span className="font-bold text-[#1C1917]">Lighting Profile:</span>
-                  <p className="text-[#57534E] mt-0.5">{selectedStyle.lighting}</p>
+                  <span className="font-semibold text-[#181615]">Lighting Profile:</span>
+                  <p className="text-[#6B645C] mt-1">{selectedStyle.lighting}</p>
                 </div>
               </div>
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-[#57534E]">Palette:</span>
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xs font-medium text-[#6B645C]">Color Palette:</span>
                   <div className="flex items-center gap-1.5">
                     {selectedStyle.colorPalette.map((color, idx) => (
                       <span
@@ -322,7 +317,7 @@ export default function StyleShowcase() {
                 <a
                   href="#waitlist"
                   onClick={() => setSelectedStyle(null)}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#1C1917] text-[#FAF8F5] text-xs sm:text-sm font-semibold hover:bg-[#B86246] transition-colors text-center"
+                  className="w-full sm:w-auto px-7 py-2.5 rounded-full bg-[#181615] text-[#FAF8F5] text-xs sm:text-sm font-semibold hover:bg-[#B26A4A] transition-colors text-center"
                 >
                   Apply in Decorly App
                 </a>

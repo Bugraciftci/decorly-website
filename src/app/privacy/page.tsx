@@ -6,23 +6,23 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-[#1C1917]">
-        <div className="mb-8">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 text-[#181615]">
+        <div className="mb-10">
           <Link
             href="/"
-            className="text-xs uppercase font-bold tracking-wider text-[#B86246] hover:underline"
+            className="text-xs uppercase font-semibold tracking-[0.2em] text-[#B26A4A] hover:underline"
           >
             ← Back to Decorly Home
           </Link>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold mt-3 mb-2">
+          <h1 className="font-editorial text-4xl sm:text-6xl font-normal mt-3 mb-2 text-[#181615]">
             Privacy Policy
           </h1>
-          <p className="text-sm text-[#57534E]">Last updated: October 2026</p>
+          <p className="text-sm text-[#6B645C] font-light">Last updated: October 2026</p>
         </div>
 
-        <div className="space-y-6 text-sm sm:text-base text-[#57534E] leading-relaxed">
+        <div className="space-y-8 text-sm sm:text-base text-[#6B645C] font-light leading-relaxed">
           <section className="space-y-2">
-            <h2 className="font-serif text-xl font-bold text-[#1C1917]">
+            <h2 className="font-editorial text-2xl font-medium text-[#181615]">
               1. Information We Collect
             </h2>
             <p>

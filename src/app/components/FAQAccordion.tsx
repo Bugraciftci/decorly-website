@@ -49,18 +49,18 @@ export default function FAQAccordion() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-[#FAF8F5]">
+    <section id="faq" className="py-28 bg-[#FAF8F5]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B86246]/10 text-[#B86246] text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             Frequently Asked Questions
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1C1917] tracking-tight mb-4">
-            Everything You Need to Know
+          <h2 className="text-4xl sm:text-6xl font-editorial font-normal text-[#181615] tracking-tight mb-4">
+            Everything You Need to <span className="italic font-light">Know</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#57534E]">
-            Have questions about how Decorly transforms your space? Here are the most common inquiries from our design community.
+          <p className="text-base sm:text-lg text-[#6B645C] font-light">
+            Answers to common questions about Decorly&apos;s AI spatial rendering and iOS availability.
           </p>
         </div>
 
@@ -70,19 +70,19 @@ export default function FAQAccordion() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl bg-white border border-[#1C1917]/10 overflow-hidden shadow-xs transition-all duration-200"
+                className="rounded-3xl bg-white border border-black/[0.06] overflow-hidden shadow-luxury-sm transition-all duration-300"
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 hover:bg-[#FAF8F5]/60 transition-colors cursor-pointer"
+                  className="w-full px-7 py-6 flex items-center justify-between text-left gap-4 hover:bg-[#FAF8F5]/60 transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-serif text-base sm:text-lg font-bold text-[#1C1917]">
+                  <span className="font-editorial text-xl sm:text-2xl font-medium text-[#181615]">
                     {faq.question}
                   </span>
                   <div
-                    className={`w-7 h-7 rounded-full bg-[#FAF8F5] border border-[#1C1917]/10 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 bg-[#1C1917] text-white" : "text-[#1C1917]"
+                    className={`w-8 h-8 rounded-full bg-[#FAF8F5] border border-black/[0.08] flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-180 bg-[#181615] text-white" : "text-[#181615]"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
@@ -90,7 +90,7 @@ export default function FAQAccordion() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#57534E] leading-relaxed border-t border-[#1C1917]/5 animate-fade-in">
+                  <div className="px-7 pb-6 pt-1 text-sm sm:text-base text-[#6B645C] font-light leading-relaxed border-t border-black/[0.04] animate-fade-in">
                     {faq.answer}
                   </div>
                 )}

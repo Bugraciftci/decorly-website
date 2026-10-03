@@ -17,26 +17,26 @@ const ROOM_PAIRS: RoomPair[] = [
   {
     id: "living",
     name: "Living Room",
-    style: "Japandi & Warm Travertine",
+    style: "Japandi & Warm Roman Travertine",
     before: "/images/living_before.jpg",
     after: "/images/living_after.jpg",
-    tags: ["Limewash Walls", "Bouclé Sofa", "Fluted Oak Accents"],
+    tags: ["Artisanal Limewash", "Curved Bouclé", "Fluted Oak"],
   },
   {
     id: "kitchen",
-    name: "Modern Kitchen",
-    style: "Calacatta Marble & Fluted Wood",
+    name: "Chef's Kitchen",
+    style: "Calacatta Gold & Stained Walnut",
     before: "/images/kitchen_before.jpg",
     after: "/images/kitchen_after.jpg",
-    tags: ["Monolithic Island", "Concealed Storage", "Brass Hardware"],
+    tags: ["Monolithic Island", "Concealed Storage", "Brushed Brass"],
   },
   {
     id: "bedroom",
     name: "Primary Suite",
-    style: "Quiet Luxury Linen Sanctuary",
+    style: "Quiet Luxury Washed Linen Sanctuary",
     before: "/images/bedroom_before.jpg",
     after: "/images/bedroom_after.jpg",
-    tags: ["Waffle Linens", "Ambient Sconces", "Organic Curves"],
+    tags: ["Belgian Linens", "Ambient 2700K Sconces", "Organic Curves"],
   },
 ];
 
@@ -48,16 +48,13 @@ export default function BeforeAfterSlider() {
 
   const activeRoom = ROOM_PAIRS[selectedRoomIndex];
 
-  const handleMove = useCallback(
-    (clientX: number) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
-      setSliderPosition(position);
-    },
-    []
-  );
+  const handleMove = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(position);
+  }, []);
 
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
@@ -96,31 +93,33 @@ export default function BeforeAfterSlider() {
 
   return (
     <div className="w-full max-w-5xl mx-auto">
-      {/* Room Selector Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-        {ROOM_PAIRS.map((room, idx) => {
-          const isActive = idx === selectedRoomIndex;
-          return (
-            <button
-              key={room.id}
-              onClick={() => {
-                setSelectedRoomIndex(idx);
-                setSliderPosition(50);
-              }}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
-                isActive
-                  ? "bg-[#1C1917] text-[#FAF8F5] shadow-md shadow-[#1C1917]/10"
-                  : "bg-white text-[#57534E] hover:text-[#1C1917] hover:bg-[#F3EFEA] border border-[#1C1917]/10"
-              }`}
-            >
-              {room.name}
-            </button>
-          );
-        })}
+      {/* Refined Room Selector Tabs */}
+      <div className="flex items-center justify-center mb-8">
+        <div className="inline-flex p-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/[0.06] shadow-luxury-sm">
+          {ROOM_PAIRS.map((room, idx) => {
+            const isActive = idx === selectedRoomIndex;
+            return (
+              <button
+                key={room.id}
+                onClick={() => {
+                  setSelectedRoomIndex(idx);
+                  setSliderPosition(50);
+                }}
+                className={`px-5 sm:px-7 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-[#181615] text-[#FAF8F5] shadow-luxury-sm"
+                    : "text-[#6B645C] hover:text-[#181615] hover:bg-black/[0.03]"
+                }`}
+              >
+                {room.name}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Main Interactive Comparison Container */}
-      <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#1C1917]/10 bg-[#E8E2D8]/30">
+      {/* Main Interactive Canvas */}
+      <div className="relative rounded-[32px] overflow-hidden shadow-luxury-xl border border-black/[0.08] bg-[#EAE3D9]/40">
         <div
           ref={containerRef}
           className="relative w-full aspect-[4/3] sm:aspect-[16/10] select-none cursor-ew-resize overflow-hidden"
@@ -144,9 +143,9 @@ export default function BeforeAfterSlider() {
               className="object-cover"
             />
             {/* After Tag */}
-            <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1C1917]/80 text-[#FAF8F5] backdrop-blur-md text-xs font-semibold tracking-wide uppercase shadow-lg">
-              <Sparkles className="w-3.5 h-3.5 text-[#B86246]" />
-              Decorly AI Redesign
+            <div className="absolute top-5 right-5 z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#181615]/85 text-[#FAF8F5] backdrop-blur-xl text-xs font-medium tracking-wide shadow-luxury-md border border-white/10">
+              <Sparkles className="w-3.5 h-3.5 text-[#B26A4A]" />
+              <span>Decorly AI Redesign</span>
             </div>
           </div>
 
@@ -155,53 +154,57 @@ export default function BeforeAfterSlider() {
             className="absolute inset-0 h-full overflow-hidden"
             style={{ width: `${sliderPosition}%` }}
           >
-            <div className="relative w-full h-full" style={{ width: containerRef.current?.clientWidth || "100%" }}>
+            <div
+              className="relative w-full h-full"
+              style={{ width: containerRef.current?.clientWidth || "100%" }}
+            >
               <Image
                 src={activeRoom.before}
-                alt={`${activeRoom.name} original room`}
+                alt={`${activeRoom.name} original space`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 1024px"
                 priority
                 className="object-cover"
               />
               {/* Before Tag */}
-              <div className="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-full bg-white/80 text-[#1C1917] backdrop-blur-md text-xs font-semibold tracking-wide uppercase shadow-lg border border-[#1C1917]/10">
-                Original Room
+              <div className="absolute top-5 left-5 z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 text-[#181615] backdrop-blur-xl text-xs font-medium tracking-wide shadow-luxury-md border border-black/[0.08]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#6B645C]" />
+                <span>Original Space</span>
               </div>
             </div>
           </div>
 
           {/* Draggable Divider Line */}
           <div
-            className="absolute top-0 bottom-0 z-20 w-1 bg-white cursor-ew-resize shadow-[0_0_12px_rgba(0,0,0,0.4)]"
+            className="absolute top-0 bottom-0 z-20 w-0.5 bg-white cursor-ew-resize shadow-[0_0_16px_rgba(0,0,0,0.5)]"
             style={{ left: `${sliderPosition}%` }}
           >
             {/* Center Slider Pill */}
-            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white text-[#1C1917] shadow-xl flex items-center justify-center border-2 border-[#1C1917]/10 transition-transform active:scale-95 hover:scale-105">
-              <MoveHorizontal className="w-5 h-5 text-[#B86246]" />
+            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white/95 backdrop-blur-xl text-[#181615] shadow-luxury-lg flex items-center justify-center border border-black/[0.1] transition-transform active:scale-95 hover:scale-105">
+              <MoveHorizontal className="w-4 h-4 text-[#B26A4A]" />
             </div>
           </div>
         </div>
 
-        {/* Caption & Style Info Strip */}
-        <div className="p-4 sm:p-5 bg-white/95 backdrop-blur-md border-t border-[#1C1917]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        {/* Minimalist Caption Bar */}
+        <div className="px-6 py-5 bg-white/90 backdrop-blur-xl border-t border-black/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-medium uppercase tracking-wider text-[#B86246]">
-              Aesthetic Applied
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B26A4A]">
+              Applied Architectural Palette
             </span>
-            <h3 className="text-base sm:text-lg font-serif font-bold text-[#1C1917]">
+            <h3 className="font-editorial text-2xl sm:text-3xl font-medium italic text-[#181615] mt-0.5">
               {activeRoom.style}
             </h3>
           </div>
 
-          {/* Style Pills */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          {/* Material Pills */}
+          <div className="flex flex-wrap items-center gap-2">
             {activeRoom.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[#FAF8F5] text-[#57534E] border border-[#1C1917]/8 font-medium"
+                className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-[#FAF8F5] text-[#6B645C] border border-black/[0.06] font-medium"
               >
-                <Check className="w-3 h-3 text-[#B86246]" />
+                <Check className="w-3 h-3 text-[#B26A4A]" />
                 {tag}
               </span>
             ))}
@@ -209,9 +212,9 @@ export default function BeforeAfterSlider() {
         </div>
       </div>
 
-      <p className="text-center text-xs text-[#57534E] mt-3 flex items-center justify-center gap-1.5">
-        <MoveHorizontal className="w-3.5 h-3.5 text-[#B86246]" />
-        Drag slider left and right to inspect wall textures, architectural lighting, and furniture layout
+      <p className="text-center text-xs text-[#6B645C] mt-4 flex items-center justify-center gap-2">
+        <MoveHorizontal className="w-3.5 h-3.5 text-[#B26A4A]" />
+        Drag divider to reveal lighting calculations, textures, and bespoke joinery
       </p>
     </div>
   );
