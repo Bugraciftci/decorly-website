@@ -1,3 +1,4 @@
-# Google AdSense / AdMob / Ad Manager Publisher Verification for Decorly
-# Account: bugraciftci7@gmail.com / Buğra Çiftçi
+# Google AdSense Publisher Verification for Decorly
+# Account: bugraciftci10@gmail.com
+google.com, pub-7744456781071955, DIRECT, f08c47fec0942fa0
 google.com, pub-3471210741577752, DIRECT, f08c47fec0942fa0

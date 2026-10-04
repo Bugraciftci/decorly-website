@@ -98,6 +98,7 @@ export const metadata: Metadata = {
     google: googleVerify || undefined,
     other: {
       ...(pinterestVerify ? { "p:domain_verify": [pinterestVerify] } : {}),
+      "google-adsense-account": ["ca-pub-7744456781071955"],
     },
   },
   robots: {

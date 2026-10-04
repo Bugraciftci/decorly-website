@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "routePath": "/api/leads",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/leads.ts:onRequestGet"
+      ]
+    },
+    {
       "routePath": "/api/waitlist",
       "mountPath": "/api",
       "method": "OPTIONS",

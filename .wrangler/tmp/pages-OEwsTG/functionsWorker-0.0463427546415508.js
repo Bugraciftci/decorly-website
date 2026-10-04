@@ -928,6 +928,54 @@ var process_default = _process;
 // ../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/_virtual_unenv_global_polyfill-@cloudflare-unenv-preset-node-process
 globalThis.process = process_default;
 
+// api/leads.ts
+var onRequestGet = /* @__PURE__ */ __name(async (context2) => {
+  const { env: env2 } = context2;
+  if (!env2.DECORLY_LEADS) {
+    return new Response(
+      JSON.stringify({
+        success: false,
+        error: "KV storage not bound.",
+        leads: []
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
+  }
+  try {
+    const listResult = await env2.DECORLY_LEADS.list({ prefix: "lead:", limit: 100 });
+    const leads = [];
+    for (const key of listResult.keys) {
+      const val = await env2.DECORLY_LEADS.get(key.name);
+      if (val) {
+        try {
+          leads.push(JSON.parse(val));
+        } catch {
+          leads.push({ key: key.name });
+        }
+      }
+    }
+    return new Response(
+      JSON.stringify({
+        success: true,
+        count: leads.length,
+        leads
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        }
+      }
+    );
+  } catch (err) {
+    return new Response(
+      JSON.stringify({ success: false, error: String(err) }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
+}, "onRequestGet");
+
 // api/waitlist.ts
 var onRequestPost = /* @__PURE__ */ __name(async (context2) => {
   const { request, env: env2 } = context2;
@@ -947,6 +995,13 @@ var onRequestPost = /* @__PURE__ */ __name(async (context2) => {
       userAgent: request.headers.get("user-agent") || "unknown",
       country: request.headers.get("cf-ipcountry") || "unknown"
     };
+    if (env2.DECORLY_LEADS) {
+      try {
+        await env2.DECORLY_LEADS.put(`lead:${email}`, JSON.stringify(payload));
+      } catch (kvErr) {
+        console.error("KV save error:", kvErr);
+      }
+    }
     const webhookUrl = env2.DISCORD_WEBHOOK_URL || env2.WEBHOOK_URL;
     if (webhookUrl) {
       try {
@@ -997,8 +1052,15 @@ var onRequestOptions = /* @__PURE__ */ __name(async () => {
   });
 }, "onRequestOptions");
 
-// ../.wrangler/tmp/pages-34ZDsy/functionsRoutes-0.7690180768498539.mjs
+// ../.wrangler/tmp/pages-OEwsTG/functionsRoutes-0.015100232199439012.mjs
 var routes = [
+  {
+    routePath: "/api/leads",
+    mountPath: "/api",
+    method: "GET",
+    middlewares: [],
+    modules: [onRequestGet]
+  },
   {
     routePath: "/api/waitlist",
     mountPath: "/api",
