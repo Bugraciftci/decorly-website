@@ -69,14 +69,14 @@ export default function AdBanner({ type, adSlotId = "decorly-ad-slot-1" }: AdBan
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FAF8F5] rounded-2xl p-4 sm:p-5 border border-black/[0.04]">
             <div className="flex items-center gap-3.5 text-left">
-              <div className="w-11 h-11 rounded-2xl bg-[#181615] text-[#FAF8F5] flex items-center justify-center font-editorial font-medium text-xl shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-[#181615] text-[#FAF8F5] flex items-center justify-center font-bold text-xl shrink-0">
                 D
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#B26A4A]">
                   Curated Interior Sponsor
                 </span>
-                <h4 className="font-editorial text-xl sm:text-2xl font-medium text-[#181615]">
+                <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#181615]">
                   Artisanal Limewash & Architectural Lighting Collection
                 </h4>
                 <p className="text-xs text-[#6B645C] font-light hidden sm:block mt-0.5">
@@ -120,7 +120,7 @@ export default function AdBanner({ type, adSlotId = "decorly-ad-slot-1" }: AdBan
           </span>
           <span className="text-[10px] text-[#6B645C]">Ad</span>
         </div>
-        <h3 className="font-editorial text-2xl font-medium text-[#181615] mb-2">
+        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#181615] mb-2">
           Nordic & Japandi Lighting Fixtures
         </h3>
         <p className="text-xs sm:text-sm text-[#6B645C] font-light leading-relaxed mb-4">

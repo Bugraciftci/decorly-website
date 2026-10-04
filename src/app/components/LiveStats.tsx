@@ -36,10 +36,10 @@ export default function LiveStats() {
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-editorial text-2xl font-medium text-[#181615]">
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#181615]">
                     Decorly Live Performance
                   </h3>
-                  <p className="text-xs text-[#6B645C] font-light">
+                  <p className="text-xs text-[#6B645C] font-normal">
                     Real-time community & design metrics
                   </p>
                 </div>
@@ -60,7 +60,7 @@ export default function LiveStats() {
                   <Eye className="w-3.5 h-3.5 text-[#B26A4A]" />
                   <span>Monthly Views</span>
                 </div>
-                <p className="font-editorial text-3xl font-medium text-[#181615]">
+                <p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#181615]">
                   94,820
                 </p>
                 <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-0.5 mt-0.5">
@@ -73,10 +73,10 @@ export default function LiveStats() {
                   <Pin className="w-3.5 h-3.5 text-[#E60023]" />
                   <span>Live Pins</span>
                 </div>
-                <p className="font-editorial text-3xl font-medium text-[#181615]">
+                <p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#181615]">
                   358
                 </p>
-                <span className="text-[10px] text-[#6B645C] font-light mt-0.5">
+                <span className="text-[10px] text-[#6B645C] font-normal mt-0.5">
                   Across 15 curated boards
                 </span>
               </div>
@@ -86,10 +86,10 @@ export default function LiveStats() {
                   <Sparkles className="w-3.5 h-3.5 text-[#B26A4A]" />
                   <span>AI Renders Made</span>
                 </div>
-                <p className="font-editorial text-3xl font-medium text-[#181615]">
+                <p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#181615]">
                   1,420+
                 </p>
-                <span className="text-[10px] text-[#6B645C] font-light mt-0.5">
+                <span className="text-[10px] text-[#6B645C] font-normal mt-0.5">
                   4K Photorealistic rooms
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function LiveStats() {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Cloudflare CDN</span>
                 </div>
-                <p className="font-editorial text-2xl font-medium text-emerald-600 flex items-center gap-1.5">
+                <p className="text-xl sm:text-2xl font-bold tracking-tight text-emerald-600 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> 100%
                 </p>
                 <span className="text-[10px] text-[#6B645C] font-light mt-0.5">

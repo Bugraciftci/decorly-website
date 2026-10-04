@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -7,15 +7,7 @@ const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const serifFont = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const viewport: Viewport = {
@@ -155,7 +147,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${sansFont.variable} ${serifFont.variable} scroll-smooth`}>
+    <html lang="en" className={`${sansFont.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"

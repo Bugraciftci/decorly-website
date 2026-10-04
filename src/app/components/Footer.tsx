@@ -18,7 +18,7 @@ export default function Footer() {
                   className="object-cover"
                 />
               </div>
-              <span className="font-editorial text-3xl font-medium tracking-tight text-[#FAF8F5]">
+              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[#FAF8F5]">
                 Decorly
               </span>
             </Link>
@@ -80,7 +80,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-[#FAF8F5]/70 font-light">
               <li>
-                <Link href="#before-after" className="hover:text-white transition-colors">
+                <Link href="/app" className="hover:text-white transition-colors font-medium text-[#FAF8F5]">
+                  Decorly for iOS (Beta)
+                </Link>
+              </li>
+              <li>
+                <Link href="/#before-after" className="hover:text-white transition-colors">
                   Spatial Before & After
                 </Link>
               </li>

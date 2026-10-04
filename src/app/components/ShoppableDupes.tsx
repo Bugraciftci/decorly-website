@@ -62,11 +62,11 @@ export default function ShoppableDupes() {
               AI Furniture Vision
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15]">
-              Pinterest Dreams, <span className="italic font-light">Realistic Budgets.</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#181615] tracking-tight leading-[1.12]">
+              Pinterest Dreams, <span className="text-[#B26A4A]">Realistic Budgets.</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#6B645C] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#6B645C] font-normal leading-relaxed">
               Every room created by Decorly isn&apos;t just conceptual art—it&apos;s buildable. Decorly breaks down the render, tags every item, and finds designer-quality furniture dupes saving you thousands.
             </p>
 
@@ -111,7 +111,7 @@ export default function ShoppableDupes() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-editorial text-xl font-medium text-[#181615]">
+                    <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#181615]">
                       Japandi Living Room #041
                     </h4>
                     <p className="text-xs text-[#6B645C]">
@@ -171,7 +171,7 @@ export default function ShoppableDupes() {
                     Total Estimated Project Cost
                   </span>
                   <div className="flex items-baseline gap-2.5 justify-center sm:justify-start mt-0.5">
-                    <span className="text-3xl font-editorial font-medium text-[#FAF8F5]">
+                    <span className="text-3xl font-bold tracking-tight text-[#FAF8F5]">
                       $1,635
                     </span>
                     <span className="text-xs text-[#FAF8F5]/50 line-through">

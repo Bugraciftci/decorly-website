@@ -137,10 +137,10 @@ export default function StyleShowcase() {
             <Sparkles className="w-3.5 h-3.5" />
             Curated 2026 Trend Catalog
           </div>
-          <h2 className="text-4xl sm:text-6xl font-editorial font-normal tracking-tight text-[#181615] leading-[1.15] mb-5">
-            30+ Architectural Aesthetics, <span className="italic font-light">Rendered in 4K</span>
+          <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#181615] leading-[1.12] mb-5">
+            30+ Architectural Aesthetics, <span className="text-[#B26A4A]">Rendered in 4K</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#6B645C] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#6B645C] font-normal leading-relaxed">
             Decorly doesn&apos;t apply flat filters. It calculates natural daylight angles, room geometry, and material depth to render spaces worthy of architectural editorials.
           </p>
         </div>
@@ -201,7 +201,7 @@ export default function StyleShowcase() {
 
                 {/* Bottom Overlay Info */}
                 <div className="absolute bottom-5 left-5 right-5 text-white z-10">
-                  <h3 className="font-editorial text-2xl sm:text-[26px] font-medium leading-snug drop-shadow-sm mb-1">
+                  <h3 className="text-xl sm:text-2xl font-bold leading-snug drop-shadow-sm mb-1 tracking-tight">
                     {item.title}
                   </h3>
                   <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/80">
@@ -277,7 +277,7 @@ export default function StyleShowcase() {
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B26A4A]">
                     {selectedStyle.categoryLabel}
                   </span>
-                  <h3 className="font-editorial text-3xl font-medium text-[#181615] mt-0.5">
+                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#181615] mt-0.5">
                     {selectedStyle.title}
                   </h3>
                 </div>

@@ -56,10 +56,10 @@ export default function FAQAccordion() {
             <HelpCircle className="w-3.5 h-3.5" />
             Frequently Asked Questions
           </div>
-          <h2 className="text-4xl sm:text-6xl font-editorial font-normal text-[#181615] tracking-tight mb-4">
-            Everything You Need to <span className="italic font-light">Know</span>
+          <h2 className="text-4xl sm:text-6xl font-bold text-[#181615] tracking-tight mb-4">
+            Everything You Need to <span className="text-[#B26A4A]">Know</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#6B645C] font-light">
+          <p className="text-base sm:text-lg text-[#6B645C] font-normal">
             Answers to common questions about Decorly&apos;s AI spatial rendering and iOS availability.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function FAQAccordion() {
                   className="w-full px-7 py-6 flex items-center justify-between text-left gap-4 hover:bg-[#FAF8F5]/60 transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-editorial text-xl sm:text-2xl font-medium text-[#181615]">
+                  <span className="text-lg sm:text-xl font-bold tracking-tight text-[#181615]">
                     {faq.question}
                   </span>
                   <div

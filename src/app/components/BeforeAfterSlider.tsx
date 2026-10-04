@@ -192,7 +192,7 @@ export default function BeforeAfterSlider() {
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B26A4A]">
               Applied Architectural Palette
             </span>
-            <h3 className="font-editorial text-2xl sm:text-3xl font-medium italic text-[#181615] mt-0.5">
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#181615] mt-0.5">
               {activeRoom.style}
             </h3>
           </div>

@@ -62,7 +62,7 @@ export default function WaitlistForm({ variant = "hero" }: WaitlistFormProps) {
         <div className="w-12 h-12 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] mx-auto flex items-center justify-center mb-3">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h4 className="font-editorial text-2xl font-semibold text-[#181615] mb-1">
+        <h4 className="text-2xl font-bold tracking-tight text-[#181615] mb-1">
           Welcome to the Private Beta
         </h4>
         <p className="text-xs sm:text-sm text-[#6B645C] mb-4 leading-relaxed">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sparkles, Apple } from "lucide-react";
 import LiveStats from "./LiveStats";
 
 export default function Navbar() {
@@ -44,37 +44,45 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-editorial text-2xl sm:text-[26px] font-semibold tracking-tight text-[#181615] leading-none">
+              <span className="text-2xl sm:text-[26px] font-bold tracking-tight text-[#181615] leading-none">
                 Decorly
               </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] font-medium text-[#B26A4A] mt-1">
+              <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#B26A4A] mt-1">
                 Spatial Interior AI
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-[#6B645C]">
+          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide text-[#6B645C]">
             <Link
-              href="#before-after"
+              href="/app"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#181615]/5 hover:bg-[#B26A4A]/10 text-[#181615] hover:text-[#B26A4A] transition-all font-semibold group"
+            >
+              <Apple className="w-3.5 h-3.5 text-[#181615] group-hover:text-[#B26A4A]" />
+              <span>iOS App</span>
+              <span className="text-[10px] bg-[#B26A4A] text-white px-1.5 py-0.2 rounded-full font-bold">Beta</span>
+            </Link>
+            <Link
+              href="/#before-after"
               className="hover:text-[#181615] transition-colors"
             >
               Before & After
             </Link>
             <Link
-              href="#styles"
+              href="/#styles"
               className="hover:text-[#181615] transition-colors"
             >
               2026 Collection
             </Link>
             <Link
-              href="#how-it-works"
+              href="/#how-it-works"
               className="hover:text-[#181615] transition-colors"
             >
               How It Works
             </Link>
             <Link
-              href="#shoppable-dupes"
+              href="/#shoppable-dupes"
               className="hover:text-[#181615] transition-colors"
             >
               Designer Dupes
@@ -89,7 +97,7 @@ export default function Navbar() {
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
             </a>
             <Link
-              href="#faq"
+              href="/#faq"
               className="hover:text-[#181615] transition-colors"
             >
               FAQ
@@ -124,7 +132,18 @@ export default function Navbar() {
         <div className="lg:hidden mx-4 mt-2 p-6 rounded-3xl bg-[#FAF8F5]/95 backdrop-blur-2xl border border-black/[0.08] shadow-luxury-xl space-y-4 animate-fade-in">
           <nav className="flex flex-col space-y-3 text-sm font-medium text-[#181615]">
             <Link
-              href="#before-after"
+              href="/app"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between py-2 text-[#181615] font-semibold hover:text-[#B26A4A] transition-colors bg-[#181615]/5 px-3 rounded-2xl"
+            >
+              <span className="flex items-center gap-2">
+                <Apple className="w-4 h-4 text-[#181615]" />
+                <span>iOS App & TestFlight</span>
+              </span>
+              <span className="text-[10px] bg-[#B26A4A] text-white px-2 py-0.5 rounded-full font-bold">VIP Beta</span>
+            </Link>
+            <Link
+              href="/#before-after"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 hover:text-[#B26A4A] transition-colors"
             >
