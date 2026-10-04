@@ -100,7 +100,7 @@ export default function AdBanner({ type, adSlotId = "decorly-ad-slot-1" }: AdBan
           <ins
             className="adsbygoogle"
             style={{ display: "block" }}
-            data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-0000000000000000"}
+            data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-3471210741577752"}
             data-ad-slot={adSlotId}
             data-ad-format="auto"
             data-full-width-responsive="true"
