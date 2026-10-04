@@ -17,18 +17,18 @@ const ROOM_PAIRS: RoomPair[] = [
   {
     id: "living",
     name: "Living Room",
-    style: "Japandi & Warm Roman Travertine",
+    style: "Japandi Living Room & Cream Bouclé",
     before: "/images/living_before.jpg",
     after: "/images/living_after.jpg",
-    tags: ["Artisanal Limewash", "Curved Bouclé", "Fluted Oak"],
+    tags: ["Cream Bouclé Sectional", "Warm Oak Herringbone", "Smooth Limewash", "Minimalist Oak Table"],
   },
   {
     id: "kitchen",
-    name: "Chef's Kitchen",
-    style: "Calacatta Gold & Stained Walnut",
+    name: "Galley Kitchen",
+    style: "Organic Modern Oak & Calacatta Quartz",
     before: "/images/kitchen_before.jpg",
     after: "/images/kitchen_after.jpg",
-    tags: ["Monolithic Island", "Concealed Storage", "Brushed Brass"],
+    tags: ["Fluted Oak Cabinetry", "Seamless White Quartz", "Brushed Brass Fixtures", "Integrated LED"],
   },
   {
     id: "bedroom",
@@ -36,7 +36,7 @@ const ROOM_PAIRS: RoomPair[] = [
     style: "Quiet Luxury Washed Linen Sanctuary",
     before: "/images/bedroom_before.jpg",
     after: "/images/bedroom_after.jpg",
-    tags: ["Belgian Linens", "Ambient 2700K Sconces", "Organic Curves"],
+    tags: ["Platform Oak Bed", "Belgian Washed Linens", "Floating Nightstands", "Warm Plaster Walls"],
   },
 ];
 
