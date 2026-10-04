@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { Sparkles, MoveHorizontal, Check } from "lucide-react";
+import { Sparkles, MoveHorizontal, Check, Camera } from "lucide-react";
 
 interface RoomPair {
   id: string;
@@ -145,7 +145,7 @@ export default function BeforeAfterSlider() {
             {/* After Tag */}
             <div className="absolute top-5 right-5 z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#181615]/85 text-[#FAF8F5] backdrop-blur-xl text-xs font-medium tracking-wide shadow-luxury-md border border-white/10">
               <Sparkles className="w-3.5 h-3.5 text-[#B26A4A]" />
-              <span>Decorly AI Redesign</span>
+              <span>After: Decorly 4K AI Redesign</span>
             </div>
           </div>
 
@@ -168,8 +168,8 @@ export default function BeforeAfterSlider() {
               />
               {/* Before Tag */}
               <div className="absolute top-5 left-5 z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 text-[#181615] backdrop-blur-xl text-xs font-medium tracking-wide shadow-luxury-md border border-black/[0.08]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#6B645C]" />
-                <span>Original Space</span>
+                <Camera className="w-3.5 h-3.5 text-[#6B645C]" />
+                <span>Before: Original Room Photo</span>
               </div>
             </div>
           </div>

@@ -24,38 +24,67 @@ export default function Home() {
       <Navbar />
 
       <main className="min-h-screen pt-24 sm:pt-28">
-        {/* ================= HERO SECTION ================= */}
-        <section className="relative pt-12 pb-24 sm:pt-16 sm:pb-32 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F5F1EA]/30 to-[#FAF8F5]">
+        {/* ================= HERO SECTION (VISUAL FIRST, INSTANT CLARITY) ================= */}
+        <section className="relative pt-6 pb-20 sm:pt-10 sm:pb-28 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F5F1EA]/30 to-[#FAF8F5]">
           {/* Subtle ambient lighting glows */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-[#B26A4A]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[#B26A4A]/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Minimalist Announcement Pill */}
-            <div className="flex justify-center mb-8">
+            {/* Value Proposition Badge */}
+            <div className="flex justify-center mb-6">
               <a
                 href="#waitlist"
                 className="inline-flex items-center gap-2.5 px-4.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.06] shadow-luxury-sm text-xs font-medium text-[#181615] hover:border-[#B26A4A]/30 transition-all group"
               >
                 <span className="flex h-2 w-2 rounded-full bg-[#B26A4A] animate-pulse" />
-                <span className="text-[#6B645C]">Private iOS TestFlight Beta Now Open</span>
+                <span className="text-[#6B645C]">Spatial AI Room Makeover • iOS 17+ & iPadOS</span>
                 <span className="text-[#B26A4A] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
-                  Claim Spot <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  Free VIP Beta <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </span>
               </a>
             </div>
 
-            {/* Editorial Main Headline */}
-            <div className="text-center max-w-4xl mx-auto mb-10">
-              <h1 className="font-editorial text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-[#181615] leading-[1.08] mb-6">
-                Your home, reimagined in <span className="italic font-light">architectural beauty</span>.
+            {/* Razor-Clear Main Headline */}
+            <div className="text-center max-w-4xl mx-auto mb-8">
+              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#181615] leading-[1.1] mb-5">
+                Snap your room. Watch AI redesign it in <span className="italic font-light">seconds</span>.
               </h1>
-              <p className="text-base sm:text-xl text-[#6B645C] max-w-2xl mx-auto leading-relaxed font-light">
-                Snap a photo of your living room, kitchen, or bedroom. Decorly transforms your space into bespoke Japandi, Quiet Luxury, and Organic Modern designs with photorealistic lighting and shoppable furniture dupes.
+              <p className="text-base sm:text-lg text-[#6B645C] max-w-2xl mx-auto leading-relaxed font-light">
+                Take a photo of any messy living room, outdated kitchen, or empty bedroom. Decorly preserves your real walls, windows, and layout while transforming furniture, lighting, and textures into bespoke Japandi and Quiet Luxury styles.
               </p>
             </div>
 
-            {/* Email Waitlist Capture */}
-            <div id="waitlist" className="mb-14">
+            {/* 3 Instant Visual Process Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 max-w-2xl mx-auto mb-10 text-xs font-medium text-[#181615]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/[0.06] shadow-luxury-sm">
+                <Camera className="w-3.5 h-3.5 text-[#B26A4A]" />
+                <span>1. Snap Photo (Preserves Layout)</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/[0.06] shadow-luxury-sm">
+                <Sliders className="w-3.5 h-3.5 text-[#586551]" />
+                <span>2. Pick 30+ Aesthetics</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/[0.06] shadow-luxury-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#B26A4A]" />
+                <span>3. Instant 4K Render & Dupes</span>
+              </div>
+            </div>
+
+            {/* THE VISUAL HERO: INTERACTIVE BEFORE & AFTER SLIDER (PROMINENT CENTERPIECE) */}
+            <div id="before-after" className="mb-14 scroll-mt-28">
+              <BeforeAfterSlider />
+            </div>
+
+            {/* Email Waitlist Capture & Early Access CTA */}
+            <div id="waitlist" className="mb-12 scroll-mt-28">
+              <div className="text-center mb-4">
+                <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B26A4A]">
+                  Join The Private iOS TestFlight
+                </span>
+                <p className="text-xs text-[#6B645C] font-light mt-0.5">
+                  Get instant access on your iPhone or iPad. Includes 50 free 4K room makeovers.
+                </p>
+              </div>
               <WaitlistForm variant="hero" />
             </div>
 
@@ -94,52 +123,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* Floating Hero Showcase Card */}
-            <div className="mt-16 sm:mt-24 relative max-w-5xl mx-auto">
-              <div className="relative rounded-[36px] overflow-hidden shadow-luxury-xl border border-black/[0.08] bg-white p-4 sm:p-6">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                  {/* Left High-Res Render */}
-                  <div className="lg:col-span-7 relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#EAE3D9]">
-                    <Image
-                      src="/images/japandi_living.jpg"
-                      alt="Japandi Living Room generated by Decorly"
-                      fill
-                      priority
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-5 left-5 z-10 px-4 py-2 rounded-2xl bg-white/90 backdrop-blur-xl text-xs font-medium text-[#181615] shadow-luxury-md border border-black/[0.06]">
-                      ✨ Japandi & Warm Travertine • Generated in 4.2s
-                    </div>
-                  </div>
-
-                  {/* Right iPhone App Showcase */}
-                  <div className="lg:col-span-5 flex flex-col justify-center space-y-4 p-2 sm:p-4">
-                    <div className="relative aspect-[3/4] w-full max-w-[280px] mx-auto rounded-[24px] overflow-hidden shadow-luxury-md border border-black/[0.08]">
-                      <Image
-                        src="/images/screenshots/01.png"
-                        alt="Decorly iOS App Interface"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="text-center pt-2">
-                      <p className="font-editorial text-xl font-medium text-[#181615]">
-                        Native iOS Experience
-                      </p>
-                      <p className="text-xs text-[#6B645C] font-light mt-1">
-                        Live camera room scanning, bespoke prompt sliders, and real-time lighting physics.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
         {/* ================= PINTEREST INTEGRATION STRIP ================= */}
-        <section className="py-14 bg-[#181615] text-[#FAF8F5] relative overflow-hidden">
+        <section className="py-12 bg-[#181615] text-[#FAF8F5] relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4">
@@ -151,7 +139,7 @@ export default function Home() {
                     Joined Us From Pinterest?
                   </h3>
                   <p className="text-xs sm:text-sm text-[#FAF8F5]/70 font-light mt-0.5">
-                    Over 358+ curated interior boards and 90K+ monthly home renovators. Decorly is the engine behind the pins.
+                    Over 358+ curated interior boards and 90K+ monthly home renovators. Decorly is the AI engine behind the pins.
                   </p>
                 </div>
               </div>
@@ -168,42 +156,22 @@ export default function Home() {
                   href="#waitlist"
                   className="px-6 py-2.5 rounded-full bg-[#B26A4A] text-white text-xs font-semibold hover:bg-[#985538] transition-colors"
                 >
-                  Download Renders
+                  Get VIP Beta
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ================= BEFORE & AFTER SECTION ================= */}
-        <section id="before-after" className="py-28 bg-[#FAF8F5]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">
-                <Layers className="w-3.5 h-3.5" />
-                Interactive Spatial Redesign
-              </div>
-              <h2 className="text-4xl sm:text-6xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15] mb-5">
-                See the Transformation in <span className="italic font-light">Real Time</span>
-              </h2>
-              <p className="text-base sm:text-lg text-[#6B645C] font-light leading-relaxed">
-                Decorly preserves your real window placements, doorways, and ceiling angles while completely elevating materials, furniture, and lighting.
-              </p>
-            </div>
-
-            <BeforeAfterSlider />
-          </div>
-        </section>
-
         {/* ================= 3-STEP PROCESS ================= */}
-        <section id="how-it-works" className="py-28 bg-[#F5F1EA]/40 border-y border-black/[0.05]">
+        <section id="how-it-works" className="py-24 bg-[#F5F1EA]/40 border-y border-black/[0.05]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B26A4A]/10 text-[#B26A4A] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">
                 <Sliders className="w-3.5 h-3.5" />
                 Three Simple Steps
               </div>
-              <h2 className="text-4xl sm:text-6xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15] mb-4">
+              <h2 className="text-3xl sm:text-5xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15] mb-4">
                 From Camera Roll to <span className="italic font-light">Sanctuary</span>
               </h2>
               <p className="text-base sm:text-lg text-[#6B645C] font-light">
@@ -270,14 +238,14 @@ export default function Home() {
         <ShoppableDupes />
 
         {/* ================= IPHONE APP SHOWCASE ================= */}
-        <section className="py-28 bg-[#FAF8F5] overflow-hidden">
+        <section className="py-24 bg-[#FAF8F5] overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/5 text-[#181615] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">
                 <Apple className="w-3.5 h-3.5" />
                 Designed For iOS 17+ & iPadOS
               </div>
-              <h2 className="text-4xl sm:text-6xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15] mb-4">
+              <h2 className="text-3xl sm:text-5xl font-editorial font-normal text-[#181615] tracking-tight leading-[1.15] mb-4">
                 Native Swift & <span className="italic font-light">Metal Precision</span>
               </h2>
               <p className="text-base sm:text-lg text-[#6B645C] font-light">
@@ -342,7 +310,7 @@ export default function Home() {
         </div>
 
         {/* ================= TESTIMONIALS ================= */}
-        <section className="py-28 bg-[#F5F1EA]/40 border-t border-black/[0.05]">
+        <section className="py-24 bg-[#F5F1EA]/40 border-t border-black/[0.05]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-5xl font-editorial font-normal text-[#181615] tracking-tight mb-3">
@@ -404,7 +372,7 @@ export default function Home() {
         <FAQAccordion />
 
         {/* ================= FINAL VIP BETA CALL TO ACTION ================= */}
-        <section className="py-28 bg-[#181615] text-[#FAF8F5] relative overflow-hidden">
+        <section className="py-24 bg-[#181615] text-[#FAF8F5] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[#B26A4A]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
